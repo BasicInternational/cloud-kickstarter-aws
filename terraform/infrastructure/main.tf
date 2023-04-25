@@ -10,11 +10,11 @@ terraform {
   }
   backend "s3" {
     # Setting variables in the backend section isn't possible as of now, see https://github.com/hashicorp/terraform/issues/13022
-    bucket = "tf-backend-state-cc-cloud-bootstrap"
+    bucket = "tf-backend-state-magic-cloud-bootstrap"
     encrypt = true
-    dynamodb_table = "tf-backend-lock-cc-cloud-bootstrap"
+    dynamodb_table = "tf-backend-lock-magic-cloud-bootstrap"
     key = "terraform.tfstate"
-    region = "eu-central-1"
+    region = "ap-northeast-2"
   }
 }
 

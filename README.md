@@ -91,7 +91,7 @@ Configure the AWS CLI to match the desired region:
 aws configure
 AWS Access Key ID [None]: 
 AWS Secret Access Key [None]: 
-Default region name [None]: eu-central-1
+Default region name [None]: ap-northeast-2
 Default output format [None]: 
 ```
 

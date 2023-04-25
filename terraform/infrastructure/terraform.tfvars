@@ -1,5 +1,5 @@
 # common settings
-aws_region = "eu-central-1"
+aws_region = "ap-northeast-2"
 stack = "cloud-bootstrap"
 aws_profile = "default"
 image_repo_name = "cloud-bootstrap"
