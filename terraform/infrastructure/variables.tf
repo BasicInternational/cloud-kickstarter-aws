@@ -6,7 +6,7 @@ variable "stack" {
 
 variable "project" {
   description = "Name of the project."
-  default     = "cc-cloud-bootstrap"
+  default     = "magic-cloud-bootstrap"
 }
 
 variable "aws_region" {

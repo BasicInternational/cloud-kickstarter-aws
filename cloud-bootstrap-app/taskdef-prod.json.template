@@ -14,7 +14,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "cc-cloud-bootstrap-prod",
+          "awslogs-group": "magic-cloud-bootstrap-prod",
           "awslogs-region": "ap-northeast-2",
           "awslogs-stream-prefix": "ecs"
         }
