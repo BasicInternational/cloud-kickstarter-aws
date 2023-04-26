@@ -24,18 +24,19 @@ resource "aws_s3_bucket" "terraform-backend-state" {
   }
 }
 
-resource "aws_s3_bucket_acl" "terraform-backend-state-acl" {
-  bucket = aws_s3_bucket.terraform-backend-state.id
-  acl = "private"
-}
-
 resource "aws_s3_bucket_ownership_controls" "terraform-backend-state-ownership" {
   bucket = aws_s3_bucket.terraform-backend-state.id
   rule {
     object_ownership = "BucketOwnerEnforced"
   }
-  depends_on = [aws_s3_bucket_acl.terraform-backend-state-acl]
 }
+
+resource "aws_s3_bucket_acl" "terraform-backend-state-acl" {
+  bucket = aws_s3_bucket.terraform-backend-state.id
+  acl = "private"
+  depends_on = [aws_s3_bucket_ownership_controls.terraform-backend-state-ownership]
+}
+
 
 resource "aws_s3_bucket_versioning" "terraform-backend-state-versioning" {
   bucket = aws_s3_bucket.terraform-backend-state.id
