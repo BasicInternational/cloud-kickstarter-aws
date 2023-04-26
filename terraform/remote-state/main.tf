@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "terraform-backend-state" {
 resource "aws_s3_bucket_ownership_controls" "terraform-backend-state-ownership" {
   bucket = aws_s3_bucket.terraform-backend-state.id
   rule {
-    object_ownership = "BucketOwnerEnforced"
+    object_ownership = "BucketOwnerPreferred"
   }
 }
 
