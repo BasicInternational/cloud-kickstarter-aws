@@ -29,6 +29,13 @@ resource "aws_s3_bucket_acl" "terraform-backend-state-acl" {
   acl = "private"
 }
 
+resource "aws_s3_bucket_ownership_controls" "terraform-backend-state-acl" {
+  bucket = aws_s3_bucket.terraform-backend-state.id
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
+}
+
 resource "aws_s3_bucket_versioning" "terraform-backend-state-versioning" {
   bucket = aws_s3_bucket.terraform-backend-state.id
   versioning_configuration {
