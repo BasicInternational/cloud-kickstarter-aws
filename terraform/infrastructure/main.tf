@@ -74,7 +74,7 @@ module "rds-dev" {
   aws_private_subnet_ids = module.network-dev.vpc_private_subnet_ids
   ecs_task_security_group_id = module.compute-dev.ecs_task_security_group_id
   vpc_main_id = module.network-dev.vpc_main_id
-  vpc_private_subnet_group_id = module.network-prod.vpc_private_subnet_group_id
+  vpc_private_subnet_group_id = module.network-dev.vpc_private_subnet_group_id
   cw_log_group = "${var.project}-dev"
 }
 

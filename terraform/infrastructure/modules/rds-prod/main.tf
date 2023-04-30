@@ -29,7 +29,7 @@ resource "aws_db_instance" "prod" {
   engine                 = "mysql"
   engine_version         = "8.0.27"
   instance_class         = var.rds_instance_type
-    username               = var.rds_admin_username
+  username               = var.rds_admin_username
   password               = random_password.db_admin_password.result
   db_subnet_group_name   = var.vpc_private_subnet_group_id
   parameter_group_name   = "default.mysql8.0"
