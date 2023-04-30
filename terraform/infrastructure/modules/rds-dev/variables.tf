@@ -16,7 +16,7 @@ variable "service_name_short" {
 
 variable "environment_name" {
   type    = string
-  default = "prod"
+  default = "dev"
 }
 
 variable "ecs_cluster_name" {
