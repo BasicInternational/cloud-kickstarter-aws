@@ -64,6 +64,39 @@ module "compute-dev" {
   cw_log_group = "${var.project}-dev"
 }
 
+module "rds-dev" {
+  source = "./modules/rds-dev"
+  stage = "dev"
+  depends_on = [module.network-dev.alb_security_group_ids]
+  project = var.project
+  stack = var.stack
+  aws_region = var.aws_region
+  aws_private_subnet_ids = module.network-dev.vpc_private_subnet_ids
+  vpc_main_id = module.network-dev.vpc_main_id
+  cw_log_group = "${var.project}-dev"
+}
+
+
+module "redis-dev" {
+  source = "./modules/redis-dev"
+
+  cluster_id         = "cloud-bootstrap-dev"
+  engine_version     = "6.2"
+  instance_type      = "cache.t3.micro"
+  maintenance_window = "sun:05:00-sun:06:00"
+  parameter_group_name = "default.redis6.x"
+  vpc_id             = module.network-dev.vpc_main_id
+  private_subnet_ids = module.network-dev.vpc_private_subnet_ids
+
+
+  tag_name          = "cloud-bootstrap-dev"
+  tag_team          = "cloud-bootstrap-team"
+  tag_contact-email = "poh@basicit.co.kr"
+  tag_application   = "cloud-bootstrap"
+  tag_environment   = "dev"
+  tag_customer      = "cloud-bootstrap"
+}
+
 # PROD stage
 module "network-prod" {
   source = "./modules/network-prod"
@@ -91,6 +124,37 @@ module "compute-prod" {
   aws_alb_trgp_green_id = module.network-prod.alb_target_group_green_id
   aws_alb_trgp_green_name = module.network-prod.alb_target_group_green_name
   aws_private_subnet_ids = module.network-prod.vpc_private_subnet_ids
+}
+
+module "rds-prod" {
+  source = "./modules/rds-prod"
+  stage = "prod"
+  depends_on = [module.network-prod.alb_security_group_ids]
+  project = var.project
+  stack = var.stack
+  aws_region = var.aws_region
+  aws_private_subnet_ids = module.network-prod.vpc_private_subnet_ids
+  vpc_main_id = module.network-prod.vpc_main_id
+  cw_log_group = "${var.project}-prod"
+}
+
+module "redis-prod" {
+  source = "./modules/redis-prod"
+
+  cluster_id         = "myteam-myapp-prod"
+  engine_version     = "6.2"
+  instance_type      = "cache.t3.micro"
+  maintenance_window = "sun:05:00-sun:06:00"
+  parameter_group_name = "default.redis6.x"
+  vpc_id             = module.network-prod.vpc_main_id
+  private_subnet_ids = module.network-prod.vpc_private_subnet_ids
+
+  tag_name          = "cloud-bootstrap-dev"
+  tag_team          = "cloud-bootstrap-team"
+  tag_contact-email = "poh@basicit.co.kr"
+  tag_application   = "cloud-bootstrap"
+  tag_environment   = "prod"
+  tag_customer      = "cloud-bootstrap"
 }
 
 output "source_repo_clone_url_http" {
