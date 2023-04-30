@@ -27,7 +27,7 @@ resource "aws_db_instance" "dev" {
   identifier             = "${var.platform_type}-${var.environment_name}-rds-instance"
   allocated_storage      = 10
   engine                 = "mysql"
-  engine_version         = "8.0.20"
+  engine_version         = "8.0.27"
   instance_class         = var.rds_instance_type
   username               = var.rds_admin_username
   password               = random_password.db_admin_password.result
