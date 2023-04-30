@@ -29,10 +29,6 @@ variable "rds_admin_username" {
   default = "admin"
 }
 
-variable "rds_subnet_group_name" {
-  type    = string
-  default = "private"
-}
 
 variable "project" {
   description = "Name of the project."
@@ -61,3 +57,4 @@ variable "cw_log_stream" {
 variable "aws_private_subnet_ids" {}
 variable "vpc_main_id" {}
 variable "ecs_task_security_group_id" {}
+variable "vpc_private_subnet_group_id" {}

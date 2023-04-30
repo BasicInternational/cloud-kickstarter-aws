@@ -31,7 +31,7 @@ resource "aws_db_instance" "dev" {
   instance_class         = var.rds_instance_type
   username               = var.rds_admin_username
   password               = random_password.db_admin_password.result
-  db_subnet_group_name   = var.rds_subnet_group_name
+  db_subnet_group_name   = var.vpc_private_subnet_group_id
   parameter_group_name   = "default.mysql8.0"
   skip_final_snapshot    = true
   publicly_accessible    = false

@@ -6,6 +6,10 @@ output "vpc_private_subnet_ids" {
   value = aws_subnet.private.*.id
 }
 
+output "vpc_private_subnet_group_id" {
+  value = aws_db_subnet_group.private.id
+}
+
 output "alb_address" {
   value = aws_alb.alb.dns_name
 }
