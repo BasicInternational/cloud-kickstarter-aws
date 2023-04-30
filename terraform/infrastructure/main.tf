@@ -185,8 +185,24 @@ output "db_address_dev" {
   value = module.rds-dev.db_address
 }
 
+output "db_username_dev" {
+  value = module.rds-dev.db_username
+}
+
+output "db_password_dev" {
+  value = module.rds-dev.db_password
+}
+
 output "db_address_prod" {
   value = module.rds-prod.db_address
+}
+
+output "db_username_prod" {
+  value = module.rds-prod.db_username
+}
+
+output "db_password_prod" {
+  value = module.rds-prod.db_password
 }
 
 output "redis_hostname_dev" {
