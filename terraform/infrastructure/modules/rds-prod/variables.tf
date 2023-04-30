@@ -60,3 +60,4 @@ variable "cw_log_stream" {
 
 variable "aws_private_subnet_ids" {}
 variable "vpc_main_id" {}
+variable "ecs_task_security_group_id" {}

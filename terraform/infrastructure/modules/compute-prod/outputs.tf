@@ -17,3 +17,7 @@ output "codedeploy_deployment_group_name" {
 output "ecs_task_execution_role_arn" {
   value = aws_ecs_task_definition.task-def.execution_role_arn
 }
+
+output "ecs_task_security_group_id" {
+  value = aws_security_group.task-sg.id
+}
