@@ -36,7 +36,7 @@ resource "aws_subnet" "private" {
 }
 
 resource "aws_db_subnet_group" "private" {
-  subnet_ids = [aws_subnet.private.*.id]
+  subnet_ids = aws_subnet.private.*.id
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
