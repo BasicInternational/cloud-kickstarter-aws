@@ -88,7 +88,6 @@ module "redis-dev" {
   parameter_group_name = "default.redis6.x"
   vpc_id             = module.network-dev.vpc_main_id
   private_subnet_ids = module.network-dev.vpc_private_subnet_ids
-  ecs_task_security_group_id = module.compute-dev.ecs_task_security_group_id
 
   tag_name          = "cloud-bootstrap-dev"
   tag_team          = "cloud-bootstrap-team"
