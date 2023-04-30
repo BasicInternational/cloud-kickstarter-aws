@@ -14,7 +14,7 @@ resource "aws_security_group" "redis" {
 resource "aws_elasticache_subnet_group" "default" {
   name        = "subnet-group-${var.tag_team}-${var.tag_application}-${var.tag_environment}"
   description = "Private subnets for the ElastiCache instances: ${var.tag_team} ${var.tag_application} ${var.tag_environment}"
-  subnet_ids  = split(",", var.private_subnet_ids)
+  subnet_ids  = var.private_subnet_ids
 }
 
 resource "aws_elasticache_cluster" "redis" {
