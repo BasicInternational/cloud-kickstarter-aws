@@ -179,3 +179,36 @@ output "alb_address_dev" {
 output "alb_address_prod" {
   value = module.network-prod.alb_address
 }
+
+
+output "db_address_dev" {
+  value = module.rds-dev.db_address
+}
+
+output "db_address_prod" {
+  value = module.rds-prod.db_address
+}
+
+output "redis_hostname_dev" {
+  value = module.redis-dev.hostname
+}
+
+output "redis_port_dev" {
+  value = module.redis-dev.port
+}
+
+output "redis_endpoint_dev" {
+  value = module.redis-dev.endpoint
+}
+
+output "redis_hostname_prod" {
+  value = module.redis-prod.hostname
+}
+
+output "redis_port_prod" {
+  value = module.redis-prod.port
+}
+
+output "redis_endpoint_prod" {
+  value = module.redis-prod.endpoint
+}
