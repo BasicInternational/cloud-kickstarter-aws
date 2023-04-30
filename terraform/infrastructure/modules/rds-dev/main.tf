@@ -23,13 +23,13 @@ resource "aws_security_group_rule" "mysql" {
   source_security_group_id = var.ecs_task_security_group_id
 }
 
-resource "aws_db_instance" "prod" {
+resource "aws_db_instance" "dev" {
   identifier             = "${var.platform_type}-${var.environment_name}-rds-instance"
   allocated_storage      = 10
   engine                 = "mysql"
   engine_version         = "8.0.20"
   instance_class         = var.rds_instance_type
-    username               = var.rds_admin_username
+  username               = var.rds_admin_username
   password               = random_password.db_admin_password.result
   db_subnet_group_name   = var.rds_subnet_group_name
   parameter_group_name   = "default.mysql8.0"
